@@ -10,7 +10,7 @@ const Movie = (props)=>{
             <p> Seats Left : {capacity - seatsbooked}</p>
             <p> Date : {date}</p>
             <p> Price : {current_price}</p>
-            <Link to={`/MovieDetails/:${_id}`} className="book-btn"> Book Seats </Link>
+            <Link to={`/MovieDetails/${_id.toString()}`} className="book-btn"> Book Seats </Link>
         </div>
     )
 }

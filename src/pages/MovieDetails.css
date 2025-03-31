@@ -1,0 +1,70 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:20px;
+}
+
+.movie-details-info {
+    max-width: 500px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.movie-details-image {
+    height: 350px;
+    width:80%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    justify-self: center;
+    align-self: center;
+}
+
+
+.movie-title {
+    color: #d32f2f;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    color: #333;
+}
+
+.book-now-btn {
+    background-color: red;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.book-now-btn:hover {
+    background-color: darkred;
+    transform: scale(1.05);
+}
+
+.login-message {
+    font-size: 16px;
+    color: gray;
+    font-style: italic;
+}
+
+.loading, .error {
+    font-size: 20px;
+    color: #d32f2f;
+    text-align: center;
+    margin-top: 50px;
+}
