@@ -7,8 +7,18 @@
     align-items: center;
 }
 
-.home{ /* of navbar*/
-    
+.home{
+    font-size:24px;
+    color:white;
+    text-decoration: solid;
+    font-weight: 900;
+}
+
+.login{
+    font-size:24px;
+    color:white;
+    text-decoration: solid;
+    font-weight: 900;
 }
 
 .movies-window{
@@ -49,4 +59,21 @@
     width: 100%;
     aspect-ratio: 2 / 3; /* Maintain 2:3 ratio */
     object-fit: cover;
+}
+.book-btn{
+    display: block;
+    border:2px solid red;
+    color:white;
+    background-color: red;
+    text-decoration: none;
+    border-radius: 8px;
+    height:20px;
+    width:100px;
+    justify-self: center;
+    margin-top:10px;
+    transition: all 0.2s ease-out;
+}
+
+.book-btn:hover{
+    transform: scale(1.2);
 }
