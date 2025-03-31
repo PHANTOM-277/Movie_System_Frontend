@@ -1,10 +1,11 @@
 import { useState,useEffect } from 'react'
 import {Link , useNavigate} from 'react-router-dom'
 import Movie from '../components/movie';
-
+import Navbar from '../components/navbar';
+import './Home.css'
 
 const Home = ()=>{
-    const [user,setUser] = useState("Log in");//initially not logged in
+    const [user,setUser] = useState(null);//initially not logged in
     const [movies, setMovies] = useState([]);
     useEffect(()=>{
         const fetchData = async () => {
@@ -33,8 +34,13 @@ const Home = ()=>{
         fetchData();
     },[])
     return(
-        <>
-            {movies && movies.map((item)=><Movie key={item._id} movie={item} />)}
+        <>  
+            <Navbar user={user} />{/* this basically helps the navbar know if user's logged in or not*/}
+            <div className="movies-window">
+                <div className="movies-container">
+                    {movies && movies.map((item)=><Movie key={item._id} movie={item} />)}
+                </div>
+            </div>
         </>
     )
 }
