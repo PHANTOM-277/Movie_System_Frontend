@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react';
-import {useParams} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
 import Navbar from '../components/navbar';
 import './MovieDetails.css'
 
@@ -7,6 +7,49 @@ const MovieDetails = ()=>{
     const {id} = useParams();
     const [data, setData] = useState(null);
     const [user, setUser] = useState(null);
+    const [seats, setSeats] = useState(0);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
+
+    const handleBooking = ()=>{
+        setError(null);
+        if(seats > data.capacity - data.seatsbooked){
+            setError("Cannot book more than available seats");
+            return;
+        }
+        if(seats === 0){
+            setError("Cannot book 0 seats");
+            return
+        }
+        //now we have to check if user is logged in or not
+        const makebooking = async()=>{
+            const email = localStorage.getItem('userEmail'); 
+            const sessionId = localStorage.getItem('sessionId');
+            const requestUrl = `http://localhost:8000/movies/booking/${id}/${seats}`;
+            console.log("Fetch Request URL:", requestUrl);
+            const response = await fetch(requestUrl,{
+                method:"POST",
+                headers: { 
+                    "Content-Type": "application/json", 
+                    "Authorization":sessionId
+                },
+                body: JSON.stringify({email}),
+            });
+            if(response.ok){
+                alert("Seats booked!");
+                navigate('/');
+            }
+            else{
+                const resdata = await response.json();
+                console.log(resdata);
+                setError("Please Login first")
+            }
+        }
+
+        makebooking();
+
+    }
+
     useEffect(()=>{
         const getData = async()=>{
             const response = await fetch(`http://localhost:8000/movies/info/${id}`);
@@ -37,12 +80,13 @@ const MovieDetails = ()=>{
                                 <p><strong>Date:</strong> {data.date}</p>
                                 <p><strong>Seats Left:</strong> {data.capacity - data.seatsbooked}</p>
                                 <p><strong>Current Price:</strong> ₹{data.current_price}</p>
-
+                                <input type='number' value={seats} onChange={(e)=>setSeats(e.target.value)}></input>
                                 {user ? (
-                                    <button className="book-now-btn">Book Now</button>
+                                    <button className="book-now-btn" onClick={handleBooking}>Book Now</button>
                                 ) : (
                                     <p className="login-message">Login to book tickets.</p>
                                 )}
+                                {error && <p className="error-message">{error}</p>}
                             </div>
                         </div>
                     </>
