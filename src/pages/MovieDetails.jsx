@@ -22,8 +22,8 @@ const MovieDetails = ()=>{
             setError("Cannot book more than available seats");
             return;
         }
-        if(seats === 0){
-            setError("Cannot book 0 seats");
+        if(seats < 1){
+            setError("invalid number of seats");
             return
         }
         //now we have to check if user is logged in or not

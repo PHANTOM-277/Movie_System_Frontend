@@ -23,6 +23,19 @@
     transform: scale(1.1);
 }
 
+.Log-out{
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.Log-out:hover{
+    color: #ffeb3b; 
+    transform: scale(1.1);
+}
+
 .movies-window {
     width: 100%;
     background: linear-gradient(to left, #00bcd4, #009688);

@@ -31,7 +31,7 @@ const BookingHistory = ()=>{
                 console.log(data);
                 setUser(email);
                 if(data.bookinghistory.bookings.length > 0){
-                    setBookings(data.bookinghistory.bookings);
+                    setBookings(data.bookinghistory.bookings.reverse()); //reversing the array to show latest booking first
                 }
                 else{
                     //do nothing , let it be null 
