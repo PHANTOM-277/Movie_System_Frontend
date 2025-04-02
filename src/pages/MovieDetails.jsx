@@ -2,6 +2,7 @@ import { useState,useEffect } from 'react';
 import {useParams, useNavigate} from 'react-router-dom'
 import Navbar from '../components/navbar';
 import './MovieDetails.css'
+import handleLogOut from '../functions/logout';
 
 const MovieDetails = ()=>{
     const {id} = useParams();
@@ -10,6 +11,10 @@ const MovieDetails = ()=>{
     const [seats, setSeats] = useState(0);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+
+    const handleLogOut1 = async()=>{
+        await handleLogOut(setUser, navigate);
+    }
 
     const handleBooking = ()=>{
         setError(null);
@@ -42,7 +47,8 @@ const MovieDetails = ()=>{
             else{
                 const resdata = await response.json();
                 console.log(resdata);
-                setError("Please Login first")
+                setUser(null);
+                setError("Please Login first");
             }
         }
 
@@ -70,7 +76,7 @@ const MovieDetails = ()=>{
     
     return(
         <>
-            <Navbar user={user} />
+            <Navbar user={[user,handleLogOut1]} />
             {data ? (
                     <>
                         <div className="main-container">

@@ -3,10 +3,17 @@ import {Link , useNavigate} from 'react-router-dom'
 import Movie from '../components/movie';
 import Navbar from '../components/navbar';
 import './Home.css'
+import handleLogOut from '../functions/logout';
 
 const Home = ()=>{
     const [user,setUser] = useState(null);//initially not logged in
     const [movies, setMovies] = useState([]);
+
+    const navigate = useNavigate();
+
+    const handleLogOut1 = async()=>{
+        await handleLogOut(setUser, navigate);
+    }
     useEffect(()=>{
         const fetchData = async () => {
 
@@ -35,7 +42,7 @@ const Home = ()=>{
     },[])
     return(
         <>  
-            <Navbar user={user} />{/* this basically helps the navbar know if user's logged in or not*/}
+            <Navbar user={[user, handleLogOut1]} />{/* this basically helps the navbar know if user's logged in or not*/}
             <div className="movies-window">
                 <div className="movies-container">
                     {movies && movies.map((item)=><Movie key={item._id} movie={item} />)}

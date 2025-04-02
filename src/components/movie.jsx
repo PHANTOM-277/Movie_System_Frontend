@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import formatDate from "../functions/formatdate";
 import '../pages/Home.css'
 /* This component is an individual movie displayed on the home page*/
 const Movie = (props)=>{
@@ -8,7 +9,7 @@ const Movie = (props)=>{
             <img src={image_URL}  alt={name} className="movie-image" />
             <p className="movie-name">{name}</p>
             <p> Seats Left : {capacity - seatsbooked}</p>
-            <p> Date : {date}</p>
+            <p> Date : {formatDate(date)}</p>
             <p> Price : {current_price}</p>
             <Link to={`/MovieDetails/${_id.toString()}`} className="book-btn"> Book Seats </Link>
         </div>

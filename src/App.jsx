@@ -4,7 +4,7 @@ import { Routes,Route, useParams } from 'react-router-dom'
 import Login from './pages/Login'
 import Home from './pages/Home'
 import MovieDetails from './pages/MovieDetails'
-
+import BookingHistory from './pages/BookingHistory'
 
 function App() {
   return(
@@ -16,6 +16,7 @@ function App() {
       {/* registeration and login route */}
       <Route path='/login' element={<Login />} />
       <Route path='/MovieDetails/:id' element={<MovieDetails />} />
+      <Route path='/BookingHistory' element={<BookingHistory />} />
     </Routes>
   )
 }
