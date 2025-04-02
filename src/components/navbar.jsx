@@ -10,8 +10,9 @@ const Navbar = (props)=>{
     return(
         <div className="navbar">
             <Link to='/' className="home">Home</Link>
-            {!user && <Link to='/login' className="login">Login</Link>}
-            {user && <Link to='/BookingHistory' className="BookingHistory">Booking History</Link>}
+            {!user && <Link to='/login'>Login</Link>}
+            {!user && <Link to='/Register'>Register</Link>}
+            {user && <Link to='/BookingHistory'>Booking History</Link>}
             {user && <p>{user}</p>}
             {user && <p onClick={handleLogOut1} className="Log-out">Log Out</p>}
         </div>
