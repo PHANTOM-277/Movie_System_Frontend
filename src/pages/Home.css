@@ -45,7 +45,7 @@
 
 .movies-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 0.225fr)); /* More flexibility */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 0.225fr)); 
     grid-auto-rows: 500px;
     gap: 30px;
     padding: 10px;
