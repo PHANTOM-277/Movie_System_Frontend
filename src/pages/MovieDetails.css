@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     padding:20px;
+    background: linear-gradient(120deg, #74ebd5, #acb6e5);
 }
 
 .movie-details-info {
