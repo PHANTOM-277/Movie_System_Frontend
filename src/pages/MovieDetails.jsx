@@ -3,6 +3,7 @@ import {useParams, useNavigate} from 'react-router-dom'
 import Navbar from '../components/navbar';
 import './MovieDetails.css'
 import handleLogOut from '../functions/logout';
+import formatDate from '../functions/formatdate'
 
 const MovieDetails = ()=>{
     const {id} = useParams();
@@ -83,7 +84,7 @@ const MovieDetails = ()=>{
                             <div className="movie-details-info">
                                 <img src={data.image_URL} alt={data.name} className="movie-details-image" />
                                 <h1 className="movie-title">{data.name}</h1>
-                                <p><strong>Date:</strong> {data.date}</p>
+                                <p><strong>Date:</strong> {formatDate(data.date)}</p>
                                 <p><strong>Seats Left:</strong> {data.capacity - data.seatsbooked}</p>
                                 <p><strong>Current Price:</strong> ₹{data.current_price}</p>
                                 <input type='number' value={seats} onChange={(e)=>setSeats(e.target.value)}></input>
